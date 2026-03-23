@@ -112,15 +112,18 @@
       position: relative; height: 100vh; min-height: 660px;
       display: flex; flex-direction: column; justify-content: flex-end;
       overflow: hidden; background: #2A1A0A;
+      contain: layout style;
     }
     .hero-img {
       position: absolute; inset: 0; z-index: 0;
+      transform: translateZ(0);
+      will-change: auto;
     }
     .hero-img img {
       width: 100%; height: 100%;
       object-fit: cover; object-position: center 55%;
       display: block; opacity: 0.95;
-      will-change: transform; transform: translateZ(0);
+      transform: translateZ(0);
     }
     .hero-overlay {
       position: absolute; inset: 0; z-index: 1;
@@ -132,6 +135,7 @@
         rgba(30,26,14,0.0)  60%,
         rgba(30,26,14,0.20) 100%
       );
+      transform: translateZ(0);
     }
     .hero-content {
       position: relative; z-index: 2;
@@ -139,9 +143,7 @@
       margin: 0;
       margin-left: clamp(1.5rem, 6vw, 7rem);
       margin-bottom: 5rem;
-      background: rgba(37, 32, 18, 0.78);
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(2px);
+      background: rgba(37, 32, 18, 0.82);
       border-radius: 3px;
       padding: 2.5rem 2.75rem;
       border-left: 2px solid rgba(168, 149, 100, 0.5);
