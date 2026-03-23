@@ -171,13 +171,6 @@
     }
     .hero-proof .sep { color: var(--gold); opacity: 0.4; }
 
-    /* ── RIBBON — GPU accelerated to prevent scroll glitch ── */
-    .ribbon { background: var(--forest); overflow: hidden; padding: 13px 0; will-change: transform; transform: translateZ(0); }
-    .ribbon-track { display: flex; white-space: nowrap; width: max-content; animation: marquee 32s linear infinite; will-change: transform; transform: translateZ(0); }
-    @keyframes marquee { from { transform: translateZ(0) translateX(0); } to { transform: translateZ(0) translateX(-50%); } }
-    .ribbon-track span { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(228,238,236,0.7); font-weight: 300; padding: 0 22px; }
-    .ribbon-track .sep { color: var(--mtn-lt); opacity: 0.6; padding: 0; }
-
     /* ── SHARED ── */
     .container { max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; }
     .section-header { text-align: center; margin-bottom: 4rem; }
@@ -461,32 +454,6 @@
       </div>
     </div>
   </section>
-
-  <!-- RIBBON -->
-  <div class="ribbon">
-    <div class="ribbon-track">
-      <span>Morocco</span><span class="sep"> · </span>
-      <span>Azerbaijan</span><span class="sep"> · </span>
-      <span>Georgia</span><span class="sep"> · </span>
-      <span>Malaysia</span><span class="sep"> · </span>
-      <span>Iran</span><span class="sep"> · </span>
-      <span>Vietnam</span><span class="sep"> · </span>
-      <span>Lebanon</span><span class="sep"> · </span>
-      <span>Poland</span><span class="sep"> · </span>
-      <span>Thailand</span><span class="sep"> · </span>
-      <span>Romania</span><span class="sep"> · </span>
-      <span>Indonesia</span><span class="sep"> · </span>
-      <span>Morocco</span><span class="sep"> · </span>
-      <span>Azerbaijan</span><span class="sep"> · </span>
-      <span>Georgia</span><span class="sep"> · </span>
-      <span>Malaysia</span><span class="sep"> · </span>
-      <span>Iran</span><span class="sep"> · </span>
-      <span>Vietnam</span><span class="sep"> · </span>
-      <span>Lebanon</span><span class="sep"> · </span>
-      <span>Poland</span><span class="sep"> · </span>
-      <span>Thailand</span><span class="sep"> · </span>
-    </div>
-  </div>
 
   <!-- WHAT YOU RECEIVE -->
   <section class="what" id="how-it-works">
