@@ -13,22 +13,21 @@
 
     :root {
       /* palette lifted from reference — olive-brown + antique gold */
-      --dark:      #332E1E;   /* deep olive-brown — main dark bg */
-      --dark-dk:   #252016;   /* deeper, for footer */
-      --dark-md:   #4A4430;   /* mid olive-brown */
-      --dark-lt:   #6B6145;   /* lighter olive, borders */
-      --gold:      #A89564;   /* antique gold — primary accent */
-      --gold-lt:   #C4B080;   /* lighter gold — hover/headings */
-      --gold-pale: #E8DFC0;   /* pale gold — subtle fills */
-      --page:      #F5F3EE;   /* warm off-white — page background */
-      --page-dk:   #ECEAE2;   /* slightly darker off-white for alternate sections */
-      --cream:     #FAF8F3;   /* near white cards */
-      --ink:       #1E1B10;   /* near-black text */
-      --ink-md:    #3D3820;   /* mid dark text */
-      --ink-lt:    #7A7255;   /* muted body text */
+      --dark:      #332E1E;
+      --dark-dk:   #252016;
+      --dark-md:   #4A4430;
+      --dark-lt:   #6B6145;
+      --gold:      #A89564;
+      --gold-lt:   #C4B080;
+      --gold-pale: #E8DFC0;
+      --page:      #F5F3EE;
+      --page-dk:   #ECEAE2;
+      --cream:     #FAF8F3;
+      --ink:       #1E1B10;
+      --ink-md:    #3D3820;
+      --ink-lt:    #7A7255;
       --border:    rgba(51,46,30,0.14);
       --border-md: rgba(51,46,30,0.24);
-      /* aliases */
       --spice:     var(--dark);
       --spice-dk:  var(--dark-dk);
       --terra:     var(--gold);
@@ -121,8 +120,8 @@
       width: 100%; height: 100%;
       object-fit: cover; object-position: center 55%;
       display: block; opacity: 0.95;
+      will-change: transform; transform: translateZ(0);
     }
-    /* very subtle vignette only — image stays bright */
     .hero-overlay {
       position: absolute; inset: 0; z-index: 1;
       background: linear-gradient(
@@ -134,7 +133,6 @@
         rgba(30,26,14,0.20) 100%
       );
     }
-    /* dark panel wrapping just the text block */
     .hero-content {
       position: relative; z-index: 2;
       max-width: 560px;
@@ -173,10 +171,10 @@
     }
     .hero-proof .sep { color: var(--gold); opacity: 0.4; }
 
-    /* ── RIBBON ── */
-    .ribbon { background: var(--forest); overflow: hidden; padding: 13px 0; }
-    .ribbon-track { display: flex; white-space: nowrap; width: max-content; animation: marquee 32s linear infinite; }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    /* ── RIBBON — GPU accelerated to prevent scroll glitch ── */
+    .ribbon { background: var(--forest); overflow: hidden; padding: 13px 0; will-change: transform; transform: translateZ(0); }
+    .ribbon-track { display: flex; white-space: nowrap; width: max-content; animation: marquee 32s linear infinite; will-change: transform; transform: translateZ(0); }
+    @keyframes marquee { from { transform: translateZ(0) translateX(0); } to { transform: translateZ(0) translateX(-50%); } }
     .ribbon-track span { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(228,238,236,0.7); font-weight: 300; padding: 0 22px; }
     .ribbon-track .sep { color: var(--mtn-lt); opacity: 0.6; padding: 0; }
 
@@ -758,7 +756,6 @@
   </footer>
 
   <script>
-    // Nav state — transparent over image, solid on scroll
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       const scrolled = window.scrollY > 60;
@@ -766,7 +763,6 @@
       nav.classList.toggle('over-image', !scrolled);
     });
 
-    // Mobile menu
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobile-menu');
     let open = false;
@@ -783,7 +779,6 @@
       burger.querySelectorAll('span').forEach(s => s.style.transform = '');
     }
 
-    // FAQ accordion
     function toggleFaq(btn) {
       const item = btn.closest('.faq-item');
       const wasOpen = item.classList.contains('open');
@@ -791,7 +786,6 @@
       if (!wasOpen) item.classList.add('open');
     }
 
-    // Scroll fade-in
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
     }, { threshold: 0.1 });
